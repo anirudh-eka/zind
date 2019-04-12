@@ -7,11 +7,19 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { counter: 0 };
+  }
+
   render() {
+    const onPress = () => this.setState({counter: this.state.counter + 1 })
+    const theTruth = `Your life sucked ${ this.state.counter } time(s).`
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>How's life?</Text>
-        <Button color="#841584" title="Click here if life sucks at the moment" />
+        <Button color="#841584" title="Click here if life sucks at the moment" onPress={onPress} />
+        <Text style={styles.welcome}> {theTruth} </Text>
       </View>
     );
   }
